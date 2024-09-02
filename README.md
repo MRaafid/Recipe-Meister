@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# AddRecipe Component
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+The `AddRecipe` component provides a user interface for adding new recipes. It includes form fields for entering various recipe details, such as title, description, keywords, ingredients, and instructions. It also includes buttons for saving the recipe or exiting the form.
 
-## Available Scripts
+## Props
+- **onExit** (function): A callback function triggered when the "Exit" button is clicked. Used to navigate away from the AddRecipe view.
+- **onAdd** (function): A callback function triggered when the "Save" button is clicked. Handles the submission of the new recipe data.
 
-In the project directory, you can run:
+## State Management
+The component uses the `useReducer` hook to manage its local state, which includes:
 
-### `npm start`
+- **title** (string): The title of the recipe.
+- **description** (string): A brief description of the recipe.
+- **keywords** (array): An array of keywords related to the recipe.
+- **instructions** (string): The cooking instructions for the recipe.
+- **ingredients** (array): An array of ingredients used in the recipe.
+- **dishType** (string): The type of dish (e.g., Vegetarian, Vegan, Meat, Poultry, Seafood).
+- **recipeImg** (string): The URL of the recipe image.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Validation
+The `onSaveHandler` function validates the form fields to ensure that no required fields are empty and that arrays are not empty. If validation passes, it triggers the `onAdd` function with the recipe data, including a unique ID generated using `uuidv4`.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Usage Example
+```jsx
+<AddRecipe
+  onExit={() => console.log('Exiting AddRecipe')}
+  onAdd={(recipe) => console.log('New recipe added:', recipe)}
+/>

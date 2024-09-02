@@ -1,0 +1,19 @@
+type: editor
+showTerminals: false
+showExplorer: true
+yourResultPort: 3000
+yourResultPath: ""
+answerPort: 3034
+answerPath: ""
+openFiles:
+  - /src/App.js
+terminals:
+  terminal1:
+    - name: Terminal
+    - commands:
+        - yarn start
+answerCommands:
+  - yarn build
+  - pm2 serve build/ 3034 --name '3-recipe-book' --spa --node-args='--expose-gc'
+  - pm2 save
+  - pm2 startup
